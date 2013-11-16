@@ -15,7 +15,7 @@
 #include "menu_root.h" // Menu root Algorithm
 #include "menu_integ.h" // Menu Integral Algorithm
 
-#include "convergence.h" // COnvergence Function
+#include "convergence.h" // Convergence Function
 #include "dicotomic.h" // Dicotomic Method For Root Finding
 #include "cords.h" //Cords Method For Root Finding
 #include "newton.h" // Newton Method For Root Finding
@@ -43,18 +43,18 @@ int main(int argc, char *argv[]) {
 	double extr_b; // Second Extreme
 	double funz_extr_a; // F(extr_a)
 	double funz_extr_b; // F(extr_b)
-	
+
 	int choice; // Choice Variable
 	int functiontype; // Function Type [Polynomial | Exponential | Trigonometric]
-	
+
 	int dimension; // Coefficients Number
 	double param[MAX_PAR]; // Coefficients Array
 	int conv; // Convergence Value
 	int mode; // Recursivity Enambled Or Not
-	
+
 	double precision; // Required Precision In The Calculation
 	double error; // Root Error Generated During Calculation
-	
+
 	double errorinteg; // Integral Error Generated During Calculation
 	long int inter; // Number Of Iterations Required
 
@@ -73,7 +73,7 @@ int main(int argc, char *argv[]) {
 
 	choice = menu_function ();
 	functiontype = choice;
-	
+
 	switch (choice) {
 
 		case 1 : { // Polynomial
@@ -81,24 +81,24 @@ int main(int argc, char *argv[]) {
 			int i; // For Loops Variable
 
 			do {
-	
+
 				system("clear");
 				fprintf (stdout, "[*] Polynomial :\n");
 				fprintf (stdout, "Input The Polynomial's Degree : ");
 				scanf ("%i", &dimension);
 				if (dimension<=0) { fprintf (stderr, "error: Degree Has To Be More Than Zero !!!\n\n"); sleep(3);}
-			
+
 			} while ( dimension <= 0 );
 
 			fprintf (stdout, " \n");
 			fprintf (stdout, "Input The Coefficients, Beginning From The Constant Term : \n");
 
 			for (i=0; i<=dimension; i++) {
-			
+
 				fprintf (stdout, "Coefficient[i] = ");
 				scanf ("%lf", &param[i]);
 				fprintf (stdout, "\n");
-			
+
 			}
 
 			break;
@@ -167,10 +167,10 @@ int main(int argc, char *argv[]) {
 
 		case 4 : { exit (0); }
 
-	
+
 	}
 
-	
+
 
 
 
@@ -191,7 +191,7 @@ int main(int argc, char *argv[]) {
 		fprintf (stdout, "Input The First Extremous : ");
 		scanf ("%lf", &extr_a);
 		funz_extr_a = function (param, dimension, functiontype, extr_a);
-		
+
 		if ( funz_extr_a == 0 ) {
 			fprintf (stdout, "The Value Is Already The Root !!!\n");
 			root = extr_a;
@@ -206,7 +206,7 @@ int main(int argc, char *argv[]) {
 		fprintf (stdout, "Input The Second Extremous : ");
 		scanf ("%lf", &extr_b);
        funz_extr_b = function (param, dimension, functiontype, extr_b);
-	   
+
 		if ( funz_extr_b == 0 ) {
 			fprintf (stdout, "The Value Is Already The Root !!!\n");
 			root = extr_b;
@@ -217,7 +217,7 @@ int main(int argc, char *argv[]) {
 		}
 
 		// Verifica Possibilità Di Ricorrenza
-		conv = convergenza (param, dimension, functiontype, extr_a, extr_b);
+		conv = convergence (param, dimension, functiontype, extr_a, extr_b);
 		if (conv == 7 ) {
 			double der_der_extr_a = deriv2 (param, dimension, functiontype, extr_a);
 			if ( funz_extr_a*der_der_extr_a > 0 ) { mode = 1; }
@@ -240,20 +240,20 @@ int main(int argc, char *argv[]) {
 
 
 	do {
-		
+
 		system ("clear");
-		
+
 		fprintf (stdout, "Input The Precision Value (>0) : ");
 		scanf ("%lf", &precision);
-		
-		if (precision <= 0) { 
-		
-			fprintf (stderr, "error: Precision <= 0 !!!\n\n"); 
-			
-			sleep(3); 
-			
+
+		if (precision <= 0) {
+
+			fprintf (stderr, "error: Precision <= 0 !!!\n\n");
+
+			sleep(3);
+
 		}
-	
+
 	} while (precision <= 0);
 
 
@@ -269,66 +269,66 @@ int main(int argc, char *argv[]) {
 
 
 	choice = menu_root (mode,conv);
-	
+
 	switch (choice) {
 
 		case 1 : { // Dicotomic
-			
+
 			root = dicotomic (param, dimension, functiontype, precision, &error, &inter, extr_a, extr_b);
-			
+
 			system ("clear");
-			
+
 			fprintf (stdout, "Function's Root [interaction = %li ] : %lf", inter, root);
-			
+
 			if ( error == 0 ) { fprintf (stdout, " ± %lf\n", error); }
 			else { fprintf (stdout, "\n"); }
-			
+
 			sleep(3);
-			
-			break; 
-			
+
+			break;
+
 		}
 
-		
+
 		case 2 : { // Cords
-			
+
 			root = cords (param, dimension, functiontype, precision, &error, &inter, extr_a, extr_b, mode);
-			
+
 			system ("clear");
-			
+
 			fprintf (stdout, "Function's Root [interaction = %li ] : %lf", inter, root);
-			
+
 			if ( error == 0. ) { fprintf (stdout, " ± %lf\n", error); }
 			else { fprintf (stdout, "\n"); }
-			
+
 			sleep(3);
-			
-			break; 
-			
+
+			break;
+
 		}
 
-		
+
 		case 3 : { // Newton
-			
+
 			root = newton (param, dimension, functiontype, precision, &error, &inter, extr_a, extr_b, mode);
-			
+
 			system ("clear");
-			
+
 			fprintf (stdout, "Function's Root [interaction = %li ] : %lf", inter, root);
-			
+
 			if ( error == 0. ) { fprintf (stdout, " ± %lf\n", error); }
 			else { fprintf (stdout, "\n"); }
-			
+
 			sleep(3);
-			
-			break; 
-			
+
+			break;
+
 		}
 
-			
+
 		case 4 : { break; }  // Exit
 
-	} 
+	}
 
 
 
@@ -344,105 +344,105 @@ int main(int argc, char *argv[]) {
 
 	system ("clear");
 
-	choice_ = menu_integ (root,error,inter);
-	
+	choice = menu_integ (root,error,inter);
+
 	switch (choice) {
 
 		case 1 : { // Rectangles
-	
+
 			double integ_first; // First Integral
 			double integ_second; // Second Integral
-			
+
 			integ_rect (param, dimension, functiontype, &integ_first, &integ_second, &errorinteg, conv, extr_a, extr_b);
-			
+
 			system ("clear");
-			
+
 			fprintf (stdout, "Function's Root [interaction = %li ] : %lf", inter, root);
-			
+
 			if ( error == 0. ) { fprintf (stdout, " ± %lf\n", error); }
 			else { fprintf (stdout, "\n"); }
-			
+
 			fprintf (stdout, "First Integral [ %lf , %lf ] = %lf", extr_a, extr_b, integ_first);
-			
+
 			if ( errorinteg == 0. ) { fprintf (stdout, " ± %lf\n", errorinteg); }
 			else { fprintf (stdout, "\n"); }
-			
+
 			fprintf (stdout, "Second Integral [ %lf , %lf ] = %lf", extr_a, extr_b, integ_second);
-			
+
 			if ( errorinteg == 0. ) { fprintf (stdout, " ± %lf\n", errorinteg); }
 			else { fprintf (stdout, "\n"); }
-			
+
 			sleep(3);
-			
-			break; 
-			
+
+			break;
+
 		}
 
-			
+
 		case 2 : { // Trapezi | Bezout
-			
+
 			integ = integ_trap (param, dimension, functiontype, &errorinteg , conv, extr_a, extr_b);
-			
+
 			system ("clear");
-			
+
 			fprintf (stdout, "Function's Root [interaction = %li ] : %lf", inter, root);
-			
+
 			if ( error == 0. ) { fprintf (stdout, " ± %lf\n", error); }
 			else { fprintf (stdout, "\n"); }
-			
-			fprintf (stdout, "Integral [ %lf , %lf ] = %lf", extr_a, extr_b, integrale);
-			
+
+			fprintf (stdout, "Integral [ %lf , %lf ] = %lf", extr_a, extr_b, integ);
+
 			if ( errorinteg == 0. ) { fprintf (stdout, " ± %lf\n", errorinteg); }
 			else { fprintf (stdout, "\n"); }
-			
+
 			sleep(3);
-			
-			break; 
-		
+
+			break;
+
 		}
-			
+
 
 		case 3 : { // Cavalieri Simpson
-		
+
 			integ = integ_cav_simpson (param, dimension, functiontype, &errorinteg, conv, extr_a, extr_b);
-			
+
 			system("clear");
-			
+
 			fprintf (stdout, "Function's Root [interaction = %li ] : %lf", inter, root);
-			
+
 			if ( error == 0. ) { fprintf (stdout, " ± %lf\n", error); }
 			else { fprintf (stdout, "\n"); }
-			
-			fprintf (stdout, "Integrale [ %lf , %lf ] = %lf", extr_a, extr_b, integrale);
-			
+
+			fprintf (stdout, "Integral [ %lf , %lf ] = %lf", extr_a, extr_b, integ);
+
 			if ( errorinteg == 0. ) { fprintf (stdout, " ± %lf\n", errorinteg); }
 			else { fprintf (stdout, "\n"); }
-			
+
 			sleep(3);
-			
-			break; 
-			
+
+			break;
+
 		}
 
-		
+
 		case 4 : {  // Exit
-		
+
 			system("clear");
-		
+
 			fprintf (stdout, "Function's Root [interaction = %li ] : %lf",inter, root);
-			
+
 			if ( error == 0. ) { fprintf (stdout, " ± %lf\n", error); }
 			else { fprintf (stdout, "\n"); }
-			
+
 			sleep(3);
-			
-			break; 
-			
+
+			break;
+
 		}
 
 	}
-	
-	
+
+
 	return 0;
 
 }
