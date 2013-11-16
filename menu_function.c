@@ -14,7 +14,7 @@ inline int menu_function (void) {
 	int exit = 4; // Menu ---> Exit
 
 	do {
-	
+
 		// Clear Screen
 		system("clear");
 
@@ -31,7 +31,7 @@ inline int menu_function (void) {
 		fprintf (stdout, "4) Exit \n\n");
 
 		fprintf (stdout, "Choice : ");
-		scanf ("%i", &choice_function);
+		scanf ("%i", &choice);
 
 	} while (choice != poly && choice != exp && choice != sincos && choice != exit);
 
