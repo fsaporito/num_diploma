@@ -14,7 +14,7 @@ inline double function (double *param, int dimension, int functiontype, double x
 //////////////////////////////////////////////////////////////////////////
 
 	int i; // For Loop Variables
-	double function; // Result
+	double fun = 0; // Result
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -27,10 +27,10 @@ inline double function (double *param, int dimension, int functiontype, double x
 
 		case 1: { // Polynomial
 
-			for (i=0; i<=dimension; i++) { 
-			
-				function += param[i]*(pow(x,i)); 
-				
+			for (i=0; i<=dimension; i++) {
+
+				fun += param[i]*(pow(x,i));
+
 			}
 
 			break;
@@ -43,7 +43,7 @@ inline double function (double *param, int dimension, int functiontype, double x
 			double b = param[1];
 			double n = param[2];
 
-			function = a*(pow(e,x)) + b*(pow(x,n));
+			fun = a*(pow(e,x)) + b*(pow(x,n));
 
 			break;
 
@@ -58,7 +58,7 @@ inline double function (double *param, int dimension, int functiontype, double x
 			double n = param[4];
 			double p = param[5];
 
-			function = A*(sin(m*x+t)) + B*(cos(n*x+p));
+			fun = A*(sin(m*x+t)) + B*(cos(n*x+p));
 
 			break;
 
@@ -72,6 +72,6 @@ inline double function (double *param, int dimension, int functiontype, double x
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
-	return function;
+	return fun;
 
 }
