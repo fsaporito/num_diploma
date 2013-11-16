@@ -15,7 +15,7 @@ inline double deriv1 (double *param, int dimension, int functiontype, double x) 
 //////////////////////////////////////////////////////////////////////////
 
 	int i; // For Loop Variables
-	double first_derivate; // Result
+	double first_derivate = 0; // Result
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -32,10 +32,19 @@ inline double deriv1 (double *param, int dimension, int functiontype, double x) 
 			double D[len]; // First Derivative Array
 
 			// D(a*x^n)=a*n*x^(n-1)
-			for (i=0; i<=len; i++) { D[i] = param[i+1]*(i+1); }
+			for (i=0; i<=len; i++) {
+
+                D[i] = param[i+1]*(i+1);
+
+			}
 
 			// First Derivate Calculation
-			for (i=0; i<=len; i++) { first_derivate += D[i]*(pow(x,i)); }
+			for (i=0; i<=len; i++) {
+
+                first_derivate += D[i]*(pow(x,i));
+
+            }
+
 
 			break;
 
@@ -47,7 +56,7 @@ inline double deriv1 (double *param, int dimension, int functiontype, double x) 
 			double b = param[1];
 			double n = param[2];
 
-			first_derivate = a*(pow(e,x)) + b*n*(pow(x,(n-1)));
+			first_derivate = (a*(pow (e, x)) + b*n*(pow ( x, (n-1) ) );
 
 			break;
 
