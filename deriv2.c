@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <math.h>
 
-#define  e = 2.7182818284
+#define  e 2.7182818284
 
 inline double deriv2 (double *param, int dimension, int functiontype, double x) {
 

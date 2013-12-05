@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <math.h>
 
-#define  e = 2.7182818284
+#define  e 2.7182818284
 
 inline double deriv1 (double *param, int dimension, int functiontype, double x) {
 
@@ -56,7 +56,7 @@ inline double deriv1 (double *param, int dimension, int functiontype, double x) 
 			double b = param[1];
 			double n = param[2];
 
-			first_derivate = (a*(pow (e, x)) + b*n*(pow ( x, (n-1) ) );
+			first_derivate = (a*(pow (e, x)) + b*n*(pow ( x, (n-1) ) ));
 
 			break;
 
