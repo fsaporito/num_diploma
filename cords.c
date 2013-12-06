@@ -73,7 +73,7 @@ inline double cords (double *param, int dimension, int functiontype, double prec
 		double funz[interations]; // Images Array
 
 		// f(a)*DDf(x) > 0
-		if ( mode = 1. ) {
+		if ( mode == 1. ) {
 
 			X[0]=extr_b; // Seed Definition
 
@@ -91,7 +91,7 @@ inline double cords (double *param, int dimension, int functiontype, double prec
 		}
 
 		// f(a)*DDf(x) < 0
-		if ( mode = 2. ) {
+		if ( mode == 2. ) {
 
 			X[0]=extr_a; // Seed Definition
 

@@ -12,4 +12,4 @@
 // extr_a  --------> first extreme point
 // extr_b ---------> second exreme point
 
-inline void integralerettangoli (double *param, int dimension, int functiontype, double *integ_first,double *integ_second, double *errorinteg, int conv, double extr_a, double extr_b);
+inline void integ_rect (double *param, int dimension, int functiontype, double *integ_first,double *integ_second, double *errorinteg, int conv, double extr_a, double extr_b);

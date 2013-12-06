@@ -58,7 +58,7 @@ inline double deriv2 (double *param, int dimension, int functiontype, double x) 
 
 		}
 
-		case 3: { // A*sin(m*x+t) + B*cos(n*x+p) =====> A*cos(m*x+t)*m - B*sin(n*x+p)*n  =====> - A*m*m*sin(m*x+t) - B*n*n*cos(n*x+t)
+		case 3: { // A*sin(m*x+t) + B*cos(n*x+p) =====> A*cos(m*x+t)*m - B*sin(n*x+p)*n  =====> - A*m*m*sin(m*x+t) - B*n*n*cos(n*x+p)
 
 			double A = param[0];
 			double m = param[1];
@@ -67,7 +67,7 @@ inline double deriv2 (double *param, int dimension, int functiontype, double x) 
 			double n = param[4];
 			double p = param[5];
 
-			second_derivate = - A*m*m*sin(m*x+t) - B*n*n*cos(n*x+t);
+			second_derivate = - A*m*m*sin(m*x+t) - B*n*n*cos(n*x+p);
 
 			break;
 
