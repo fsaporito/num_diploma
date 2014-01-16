@@ -6,23 +6,24 @@
 #include <unistd.h> // Sleep
 #include <sys/types.h>
 
-#include "function.h" // Function Value
-#include "deriv1.h" // Deriv 1 Value
-#include "deriv2.h" // Deriv 2 Value
-#include "deriv4.h" // Deriv 4 Value
+#include "./Functions/function.h" // Function Value
+#include "./Functions/deriv1.h" // Deriv 1 Value
+#include "./Functions/deriv2.h" // Deriv 2 Value
+#include "./Functions/deriv4.h" // Deriv 4 Value
 
-#include "menu_function.h" // Menu Function Type
-#include "menu_root.h" // Menu root Algorithm
-#include "menu_integ.h" // Menu Integral Algorithm
+#include "./Functions/convergence.h" // Convergence Function
 
-#include "convergence.h" // Convergence Function
-#include "dicotomic.h" // Dicotomic Method For Root Finding
-#include "cords.h" //Cords Method For Root Finding
-#include "newton.h" // Newton Method For Root Finding
+#include "./Menus/menu_function.h" // Menu Function Type
+#include "./Menus/menu_root.h" // Menu root Algorithm
+#include "./Menus/menu_integ.h" // Menu Integral Algorithm
 
-#include "integ_rect.h" // Rectangles Method To Calculate Definite Integrals
-#include "integ_trap.h" // Trapezis Method To Calculate Definite Integrals
-#include "integ_cav_simpson.h" // Cavalieri Simpson Method To Calculate Definite Integrals
+#include "./Roots/dicotomic.h" // Dicotomic Method For Root Finding
+#include "./Roots/cords.h" //Cords Method For Root Finding
+#include "./Roots/newton.h" // Newton Method For Root Finding
+
+#include "./Integrals/integ_rect.h" // Rectangles Method To Calculate Definite Integrals
+#include "./Integrals/integ_trap.h" // Trapezis Method To Calculate Definite Integrals
+#include "./Integrals/integ_cav_simpson.h" // Cavalieri Simpson Method To Calculate Definite Integrals
 
 
 #define MAX_PAR 100
@@ -49,7 +50,7 @@ int main(int argc, char *argv[]) {
 
 	int dimension; // Coefficients Number
 	double param[MAX_PAR]; // Coefficients Array
-	int conv; // Convergence Value
+	int conv = 0; // Convergence Value
 	int mode; // Recursivity Enambled Or Not
 
 	double precision; // Required Precision In The Calculation
@@ -66,7 +67,7 @@ int main(int argc, char *argv[]) {
 
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
-// Scelta Tipo Funzione
+// Function Type Choice
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
@@ -184,48 +185,84 @@ int main(int argc, char *argv[]) {
 //////////////////////////////////////////////////////////////////////////
 
 
-	do {
+	while (conv < 2) {
 
 		system("clear");
+
 		fprintf (stdout, " \n");
 		fprintf (stdout, "Input The First Extremous : ");
 		scanf ("%lf", &extr_a);
+
 		funz_extr_a = function (param, dimension, functiontype, extr_a);
 
 		if ( funz_extr_a == 0 ) {
+
 			fprintf (stdout, "The Value Is Already The Root !!!\n");
+
 			root = extr_a;
+
 			sleep(3);
+
 			system("clear");
+
 			fprintf (stdout, "Function's Root : %lf\n", root);
+
 			return 0;
+
 		}
 
 		system("clear");
+
 		fprintf (stdout, " \n");
 		fprintf (stdout, "Input The Second Extremous : ");
 		scanf ("%lf", &extr_b);
-       funz_extr_b = function (param, dimension, functiontype, extr_b);
+
+		funz_extr_b = function (param, dimension, functiontype, extr_b);
 
 		if ( funz_extr_b == 0 ) {
+
 			fprintf (stdout, "The Value Is Already The Root !!!\n");
+
 			root = extr_b;
+
 			sleep(3);
+
 			system("clear");
+
 			fprintf (stdout, "Function's Root : %lf\n", root);
+
 			return 0;
 		}
 
-		// Verifica Possibilità Di Ricorrenza
-		conv = convergence (param, dimension, functiontype, extr_a, extr_b);
-		if (conv == 7 ) {
-			double der_der_extr_a = deriv2 (param, dimension, functiontype, extr_a);
-			if ( funz_extr_a*der_der_extr_a > 0 ) { mode = 1; }
-			if ( funz_extr_a*der_der_extr_a < 0 ) { mode=2; }
-		}
-		else { mode = 3; }
 
-	} while (conv > 2); // Le Immagini Degli Estremi Devono Essere Discordi E La Funzione Deve Essere Continua
+		conv = convergence (param, dimension, functiontype, extr_a, extr_b);
+
+		// Check Recurrence Possibility
+		if (conv == 7 ) {
+
+			double der_der_extr_a = deriv2 (param, dimension, functiontype, extr_a);
+
+			if ( funz_extr_a*der_der_extr_a > 0 ) {
+
+				mode = 1;
+
+			}
+
+			if ( funz_extr_a*der_der_extr_a < 0 ) {
+
+				mode = 2;
+
+			}
+
+		} else {
+
+			mode = 3;
+
+		}
+
+		fprintf (stderr, "Conv = %i", conv);
+
+	}
 
 
 
