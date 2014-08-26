@@ -12,12 +12,12 @@ PREFIX=/usr/local
 
 
 # Additionary Sources Path
-F=-I../Functions
-M=-I../Menus
-I=-I../ntegrals
-R=-I../Roots
+F= ../Functions
+M= ../Menus
+I= ../ntegrals
+R= ../Roots
 
-PATH =${F} ${M} ${I} ${R}
+VPATH =${F} ${M} ${I} ${R}
 
 
 # Software Name
@@ -50,10 +50,11 @@ SOURCE=num_diploma.c ${FUNCTIONS} ${MENUS} ${INTEGRALS} ${ROOTS}
 
 # Make
 all:
-	${CC} -o ${OUT}/${NAME} ${SOURCE} ${CFLAGS} ${LIB} ${PATH}
+	${CC} -o ${OUT}/${NAME} ${SOURCE} ${CFLAGS} ${LIB}
 	
 clean:
 	-rm -f ${NAME}
+	-rm -f ${OUT}/${NAME}
 
 install:
 	install -s ${OUT}/${NAME} ${PREFIX}/bin

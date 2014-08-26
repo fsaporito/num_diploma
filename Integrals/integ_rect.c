@@ -49,7 +49,7 @@ inline void integ_rect(double *param, int dimension, int functiontype, double *i
 	*integ_first = base*(Y[0]);
 	*integ_second = 0;
 
-// I
+// Integral Calculation
 	for (i=1; i<=n; i++) {
 
 		X[i] = X[i-1] + base;

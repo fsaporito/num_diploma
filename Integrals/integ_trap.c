@@ -15,8 +15,8 @@ inline double integ_trap (double *param, int dimension, int functiontype, double
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
-	double funz_extr_a; // Immagine Estremo A
-	double funz_extr_b; // Immagine Estremo B
+	double funz_extr_a; // Point A Image
+	double funz_extr_b; // B Point Image
 	double integ; // Result
 	int i; // For Loop Variable
 	long int n; // Number Of Intervals

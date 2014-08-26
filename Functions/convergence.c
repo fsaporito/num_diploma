@@ -53,7 +53,7 @@ system("clear");
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
-	fprintf (stdout, "[*] Immagini Degli Estremi Dell'intervallo Discordi");
+	fprintf (stdout, "[*] Discord Images Of The Extremous Points");
 
 	funz_extr_a = function (param, dimension, functiontype, extr_a); // F(extr_a)
 	funz_extr_b = function (param, dimension, functiontype, extr_b); // F(extrb)
@@ -132,7 +132,6 @@ system("clear");
 			fprintf (stdout, " \n");
 			fprintf (stderr, "error: Function Not Continuous In The Interval !!!\n");
 			sleep(3);
-			break;
 			return 2;
 		}
 
@@ -167,7 +166,6 @@ system("clear");
 			fprintf (stdout, " \n");
 			fprintf (stderr, "error: Function Not Derivable In The Interval !!!\n");
 			sleep(3);
-			break;
 			return 3;
 		}
 
@@ -199,7 +197,6 @@ system("clear");
 			fprintf (stdout, " \n");
 			fprintf (stderr, "error: Function Not Monotone In The Interval !!!\n");
 			sleep(3);
-			break;
 			return 4;
 		}
 
@@ -232,7 +229,6 @@ system("clear");
 			fprintf (stdout, " \n");
 			fprintf (stderr, "error: First Derivate Not Continuous In The Interval !!!\n");
 			sleep(3);
-			break;
 			return 5;
 		}
 
@@ -265,7 +261,6 @@ system("clear");
 			fprintf (stdout, " \n");
 			fprintf (stderr, "error: Second Derivate's Sign Not Continuous In The Interval !!!\n");
 			sleep(3);
-			break;
 			return 6;
 		}
 
@@ -304,7 +299,6 @@ system("clear");
 			fprintf (stdout, " \n");
 			fprintf (stderr, "error: Second Derivate Not Continuous In The Interval !!!\n");
 			sleep(3);
-			break;
 			return 7;
 		}
 
@@ -342,7 +336,6 @@ system("clear");
 			fprintf (stdout, " \n");
 			fprintf (stderr, "error: Fourth Derivate Not Continuous In The Interval !!!\n");
 			sleep(3);
-			break;
 			return 8;
 		}
 

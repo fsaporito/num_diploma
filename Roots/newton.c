@@ -16,11 +16,12 @@ inline double newton (double *param, int dimension, int functiontype, double pre
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
-	int interations; // Number Of Interations
-	int i; // For Loop Variables
-	double root; // Result
+	int interations = 0; // Number Of Interations
+	int i = 0; // For Loop Variables
+	double root = 0.0; // Result
 
 	system("clear");
+
 	fprintf (stdout, "Input The Requested Number Of Iterations : ");
 	scanf ("%i", &interations);
 

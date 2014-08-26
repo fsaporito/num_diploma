@@ -17,7 +17,7 @@ inline double dicotomic (double *param, int dimension, int functiontype, double 
 
 	double funz_extr_a; // F(extr_a)
 	double funz_extr_b; // F(extr_b)
-	double m; // Medium Point Beetwen extr_a And extr_b
+	double m; // Medium Point Between extr_a And extr_b
 	double funz_m; // F(m)
 
 

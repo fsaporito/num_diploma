@@ -18,8 +18,8 @@ inline double cords (double *param, int dimension, int functiontype, double prec
 	double funz_extr_a; // F(a)
 	double funz_extr_b; // F(b)
 	int i; // For Loop Variables
-	double X_intersec; // Intersection  Beetwen The Function And The X Axis
-	double Y_intersec; // Image Of The Interserction
+	double X_intersec; // Intersection  Between The Function And The X Axis
+	double Y_intersec; // Image Of The Intersection
 	double root; // Result
 
 
